@@ -8,7 +8,6 @@ var sendMessage = function (event) {
 };
 
 var displayMessage = function (message) {
-  console.log("hi");
   $(".chat-log").append($("<li></li>").text(message.nickname + ": " + message.text));
 };
 

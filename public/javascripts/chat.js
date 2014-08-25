@@ -19,8 +19,11 @@
     var params = input.split(' ');
     switch(params[0]) {
     case "nick":
-        this.socket.emit('nicknameChangeRequest', { nick: params[1] })
-        break;
+      this.socket.emit('nicknameChangeRequest', { nick: params[1] });
+      break;
+    case "join":
+      this.socket.emit('roomChangeRequest', { room: params[1] });
+      break;
     default:
     };
   };
