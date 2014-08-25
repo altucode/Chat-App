@@ -8,6 +8,20 @@
   };
 
   Chat.prototype.sendMessage = function(message) {
-    this.socket.emit('message', { text: message });
+    if (message[0] === '/') {
+      this.parseCommand(message.slice(1));
+    } else  {
+      this.socket.emit('message', { text: message });
+    }
+  };
+
+  Chat.prototype.parseCommand = function(input) {
+    var params = input.split(' ');
+    switch(params[0]) {
+    case "nick":
+        this.socket.emit('nicknameChangeRequest', { nick: params[1] })
+        break;
+    default:
+    };
   };
 })();
